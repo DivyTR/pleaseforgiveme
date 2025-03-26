@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffeef5;
+      background-color: #ffeaf1;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       display: flex;
       flex-direction: column;
@@ -16,6 +16,7 @@
       justify-content: center;
       height: 100vh;
       position: relative;
+      text-align: center;
     }
 
     .emoji {
@@ -23,15 +24,10 @@
       margin-bottom: 30px;
     }
 
-    .text {
+    #typewriter-text {
       font-size: 26px;
-      margin-bottom: 40px;
-      animation: fadeIn 1.2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin-bottom: 50px;
+      min-height: 40px; /* prevents layout shift */
     }
 
     .btn-no {
@@ -42,7 +38,6 @@
       background: linear-gradient(to right, #3b82f6, #a855f7);
       color: white;
       font-weight: bold;
-      text-decoration: underline;
       cursor: pointer;
     }
 
@@ -71,9 +66,26 @@
 </head>
 <body>
   <img class="emoji" src="angry-cat.png" alt="Angry cute cat" />
-  <div class="text">Have I done something silly again?</div>
-  <button class="btn-no">NO</button>
+  
+  <div id="typewriter-text"></div>
 
-  <button class="btn-yes">Yes</button>
+  <button class="btn-no" onclick="window.location.href='last.html'">NO</button>
+  <button class="btn-yes" onclick="window.location.href='third.html'">Yes</button>
+
+  <!-- Typewriter JS -->
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    const app = document.getElementById('typewriter-text');
+
+    const typewriter = new Typewriter(app, {
+      loop: false,
+      delay: 40,
+      cursor: '|',
+    });
+
+    typewriter
+      .typeString("Have I done something silly again?")
+      .start();
+  </script>
 </body>
 </html>
