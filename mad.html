@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Are you mad at me?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .gif {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      font-size: 24px;
+      margin-bottom: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #333;
+      width: 0;
+      animation: typing 2.5s steps(30, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 240px }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 40px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn.yes {
+      background-color: #333;
+      color: white;
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+
+    .btn.no {
+      background-color: black;
+      color: white;
+      font-size: 22px;
+      padding: 14px 30px;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <img class="gif" src="sad.gif" alt="Sad face gif" />
+  <div class="question">Are you mad at me?</div>
+  <div class="buttons">
+    <button class="btn yes">Yes</button>
+    <button class="btn no">NO</button>
+  </div>
+
+  <script>
+    // Optional: Add logic here to navigate to different pages when clicked
+    document.querySelector('.btn.yes').onclick = () => alert("Oh no 🥺... Let's fix it.");
+    document.querySelector('.btn.no').onclick = () => alert("Yay! You're not mad 😄");
+  </script>
+</body>
+</html>

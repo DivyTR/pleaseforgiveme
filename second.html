@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Did I do something silly?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffeef5;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .emoji {
+      width: 100px;
+      margin-bottom: 30px;
+    }
+
+    .text {
+      font-size: 26px;
+      margin-bottom: 40px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-no {
+      padding: 14px 36px;
+      font-size: 22px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
+      color: white;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .btn-no:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-yes {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      padding: 4px 6px;
+      border-radius: 10px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .btn-yes:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <img class="emoji" src="angry-cat.png" alt="Angry cute cat" />
+  <div class="text">Have I done something silly again?</div>
+  <button class="btn-no">NO</button>
+
+  <button class="btn-yes">Yes</button>
+</body>
+</html>

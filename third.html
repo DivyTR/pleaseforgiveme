@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luna the Cat</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffeef5;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .cat-img {
+      width: 140px;
+      margin-bottom: 30px;
+    }
+
+    .text {
+      font-size: 20px;
+      margin: 10px 20px 40px;
+      max-width: 90%;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-secondary {
+      font-size: 14px;
+      padding: 10px 18px;
+      background: linear-gradient(to right, #1e3a8a, #9333ea);
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+  <img class="cat-img" src="luna-cat.png" alt="Luna the cat" />
+  <div class="text">
+    <p>Hello Nija, it’s me Luna, Divyansh’s cat</p>
+    <p>Tell me about it girl, he must have disappointed you once again right?</p>
+  </div>
+  <div class="buttons">
+    <button class="btn">YES!!</button>
+    <button class="btn btn-secondary">Its Fine, I forgive him</button>
+  </div>
+</body>
+</html>
