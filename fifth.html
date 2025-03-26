@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffeef5;
+      background-color: #ffeaf1;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       display: flex;
       flex-direction: column;
@@ -23,11 +23,12 @@
       margin-bottom: 30px;
     }
 
-    .text {
+    #typewriter-text {
       font-size: 20px;
       max-width: 80%;
       margin-bottom: 40px;
       line-height: 1.6;
+      min-height: 80px;
     }
 
     .btn {
@@ -40,21 +41,50 @@
       cursor: pointer;
       font-weight: bold;
       transition: transform 0.3s ease;
+      display: none; /* Hide initially */
     }
 
-    .btn:hover {
-      transform: scale(1.05);
+    .btn.show {
+      display: inline-block;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <img class="cat-img" src="pizza-cat.png" alt="Cute cat with pizza" />
-  <div class="text">
-    <strong>But he does!</strong><br>
-    Give him a chance — I know he’s a total moron,<br>
-    but he’ll always be there for you… even if it’s with pizza and bad jokes.<br>
-    
-  </div>
-  <button class="btn" onclick="window.location.href='thankyou.html'">Okay.</button>
+
+  <div id="typewriter-text"></div>
+
+  <button class="btn" id="ok-btn" onclick="window.location.href='last.html'">Okay.</button>
+
+  <!-- Typewriter JS -->
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    const app = document.getElementById('typewriter-text');
+    const button = document.getElementById('ok-btn');
+
+    const typewriter = new Typewriter(app, {
+      loop: false,
+      delay: 30,
+      cursor: '|',
+    });
+
+    typewriter
+      .typeString("<strong>But he does!</strong><br>")
+      .pauseFor(500)
+      .typeString("Give him a chance — I know he’s a total moron,<br>")
+      .pauseFor(500)
+      .typeString("but he’ll always be there for you… even if it’s with pizza and bad jokes.")
+      .pauseFor(400)
+      .callFunction(() => {
+        button.classList.add('show');
+      })
+      .start();
+  </script>
 </body>
 </html>
