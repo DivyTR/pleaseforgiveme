@@ -14,24 +14,42 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 80vh;
       text-align: center;
     }
 
     .gif {
-      width: 200px;
-      margin-bottom: 30px;
+      width: 300px;
+      margin-bottom: 70px;
     }
 
-    .thank-text {
-      font-size: 32px;
+    #typewriter-text {
+      font-size: 72px;
       font-weight: bold;
       color: #ff69b4;
+      min-height: 90px;
     }
   </style>
 </head>
 <body>
   <img class="gif" src="Happy We Did It GIF by Pudgy Penguins.gif" alt="Yay penguin" />
-  <div class="thank-text">Thank you! </div>
+
+  <div id="typewriter-text"></div>
+
+  <!-- Typewriter JS -->
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    const app = document.getElementById('typewriter-text');
+
+    const typewriter = new Typewriter(app, {
+      loop: false,
+      delay: 60,
+      cursor: '|',
+    });
+
+    typewriter
+      .typeString('Thank youuu 🥹')
+      .start();
+  </script>
 </body>
 </html>
