@@ -23,17 +23,19 @@
       margin-bottom: 30px;
     }
 
-    .text {
+    #typewriter-text {
       font-size: 20px;
       margin: 10px 20px 40px;
       max-width: 90%;
+      min-height: 70px;
     }
 
     .buttons {
-      display: flex;
+      display: none; /* Hidden initially */
       gap: 40px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 10px;
     }
 
     .btn {
@@ -45,7 +47,7 @@
       color: white;
       cursor: pointer;
       font-weight: bold;
-      transition: transform 0.3s ease;
+      transition: transform 0.1s ease;
     }
 
     .btn:hover {
@@ -62,13 +64,35 @@
 </head>
 <body>
   <img class="cat-img" src="luna-cat.png" alt="Luna the cat" />
-  <div class="text">
-    <p>Hello Nija, it’s me Luna, Divyansh’s cat</p>
-    <p>Tell me about it girl, he must have disappointed you once again right?</p>
+
+  <div id="typewriter-text"></div>
+
+  <div class="buttons" id="button-container">
+    <button class="btn" onclick="window.location.href='fourth.html'">YES!!</button>
+    <button class="btn btn-secondary" onclick="window.location.href='last.html'">Its Fine, I forgive him</button>
   </div>
-  <div class="buttons">
-    <button class="btn">YES!!</button>
-    <button class="btn btn-secondary">Its Fine, I forgive him</button>
-  </div>
+
+  <!-- Typewriter JS -->
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+  <script>
+    const app = document.getElementById('typewriter-text');
+    const buttons = document.getElementById('button-container');
+
+    const typewriter = new Typewriter(app, {
+      loop: false,
+      delay: 30,
+      cursor: '|',
+    });
+
+    typewriter
+      .typeString("Hello Nija, it’s me Luna, Divyansh’s cat.")
+      .pauseFor(700)
+      .typeString(" Tell me about it girl, he must have disappointed you once again right?")
+      .pauseFor(400)
+      .callFunction(() => {
+        buttons.style.display = "flex";
+      })
+      .start();
+  </script>
 </body>
 </html>
