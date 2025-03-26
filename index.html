@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #fff0f5;
+      background-color: #ffeaf1;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       display: flex;
       flex-direction: column;
@@ -19,55 +19,57 @@
     }
 
     .gif {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 160px;
+      height: 130px;
+      margin-bottom: 50px;
     }
 
-    .question {
-      font-size: 24px;
-      margin-bottom: 30px;
+    #typewriter-text {
+      font-size: 36px;
+      margin-bottom: 40px;
       white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #333;
-      width: 0;
-      animation: typing 2.5s steps(30, end) forwards, blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 240px }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+      min-height: 50px;
     }
 
     .buttons {
       display: flex;
-      gap: 40px;
+      gap: 80px;
+      align-items: flex-end;
     }
 
     .btn {
-      padding: 10px 20px;
       border: none;
       border-radius: 25px;
-      font-size: 16px;
+      font-family: inherit;
       cursor: pointer;
       transition: 0.3s;
+      display: none;
+    }
+
+    .btn.show {
+      display: inline-block;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .btn.yes {
-      background-color: #333;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
       color: white;
-      font-size: 12px;
-      padding: 5px 10px;
+      font-size: 10px;
+      padding: 2px 8px;
+      height: 24px;
+      border-radius: 12px;
     }
 
     .btn.no {
-      background-color: black;
+      background: linear-gradient(to right, #3b82f6, #a855f7);
       color: white;
-      font-size: 22px;
-      padding: 14px 30px;
+      font-size: 24px;
+      padding: 16px 36px;
     }
 
     .btn:hover {
@@ -76,17 +78,38 @@
   </style>
 </head>
 <body>
-  <img class="gif" src="sad.gif" alt="Sad face gif" />
-  <div class="question">Are you mad at me?</div>
+  <img class="gif" src="sad.png" alt="Sad face gif" />
+
+  <div id="typewriter-text"></div>
+
   <div class="buttons">
-    <button class="btn yes">Yes</button>
-    <button class="btn no">NO</button>
+    <button class="btn yes" id="yesBtn" onclick="window.location.href='second.html'">Yes</button>
+    <button class="btn no" id="noBtn" onclick="window.location.href='last.html'">NO</button>
   </div>
 
+  <!-- Typewriter Effect JS -->
+  <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   <script>
-    // Optional: Add logic here to navigate to different pages when clicked
-    document.querySelector('.btn.yes').onclick = () => alert("Oh no 🥺... Let's fix it.");
-    document.querySelector('.btn.no').onclick = () => alert("Yay! You're not mad 😄");
+    const typeTarget = document.getElementById('typewriter-text');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+
+    const typewriter = new Typewriter(typeTarget, {
+      loop: false,
+      delay: 45,
+      cursor: '|',
+    });
+
+    typewriter
+      .typeString("Are you mad at me?")
+      .pauseFor(500)
+      .callFunction(() => {
+        noBtn.classList.add('show');
+        setTimeout(() => {
+          yesBtn.classList.add('show');
+        }, 600); // delay for the shy "Yes" button
+      })
+      .start();
   </script>
 </body>
 </html>
